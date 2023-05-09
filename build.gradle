@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.6'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'ru.vk.bot'
+version = '0.0.1'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+jar{
+    manifest{
+        attributes "Main-Class": "ru.vk.bot.Main"
+    }
+}
+
+dependencies {
+    implementation 'org.xerial:sqlite-jdbc:3.7.2'
+    implementation 'com.vk.api:sdk:1.0.14'
+    implementation 'org.springframework.boot:spring-boot:3.0.6'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.0.6'
+    implementation 'org.springframework.boot:spring-boot-starter-parent:3.0.6'
+}
