@@ -6,9 +6,7 @@ plugins {
 
 group = 'ru.vk.bot'
 version = '0.0.1'
-java{
-    sourceCompatibility = '17'
-}
+sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
@@ -21,9 +19,9 @@ jar{
 }
 
 dependencies {
-    implementation 'org.xerial:sqlite-jdbc'
-    implementation 'com.vk.api:sdk'
-    implementation 'org.springframework.boot:spring-boot'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-parent'
+    implementation 'org.xerial:sqlite-jdbc:3.7.2'
+    implementation 'com.vk.api:sdk:1.0.14'
+    implementation 'org.springframework.boot:spring-boot:3.1.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.1.0'
+    implementation 'org.springframework.boot:spring-boot-starter-parent:3.1.0'
 }
