@@ -19,9 +19,23 @@ jar{
 }
 
 dependencies {
-    implementation 'org.xerial:sqlite-jdbc:3.7.2'
+    implementation 'com.mysql:mysql-connector-j:8.0.33'
     implementation 'com.vk.api:sdk:1.0.14'
-    implementation 'org.springframework.boot:spring-boot:3.1.0'
-    implementation 'org.springframework.boot:spring-boot-starter-web:3.1.0'
-    implementation 'org.springframework.boot:spring-boot-starter-parent:3.1.0'
+    implementation 'org.springframework.boot:spring-boot'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+task BuildRun(type:Exec){
+    dependsOn "build"
+    workingDir "/build/libs"
+    commandLine "java", "-jar", "VkBot-0.0.1.jar"
 }

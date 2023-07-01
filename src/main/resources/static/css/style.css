@@ -1,0 +1,65 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: grey;
+}
+nav{
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 1%;
+    display: inline-block;
+    background-color: white;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+    a:hover{
+        color: red;
+    }
+form{
+    background-color: white;
+    padding: 0.5%;
+    width: fit-content;
+}
+    form>h3{
+        margin: 0;
+    }
+    form>input{
+        margin: 3px auto;
+
+    }
+    form>select{
+        margin: 2px auto;
+    }
+    form>.ratio-week{
+        background-color: lightgrey;
+        padding: 2px 3px;
+        margin: 0 1px;
+    }
+.wrapper{
+    overflow-y: auto;
+    width: 100%;
+}
+    table{
+        width: auto;
+        background-color: white;
+        min-height: 20px;
+        font-size: small;
+    }
+        table tr{
+            
+        }
+            table tr:hover{
+                background-color: grey;
+            }
+            table tr:hover:nth-child(1){
+                background-color: white;
+            }
+            table tr td{
+                border: 1px solid gray;
+                white-space: nowrap;
+                padding: 3px 5px;
+            }
+        

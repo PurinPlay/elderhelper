@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Студенты</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h2>Студенты</h2>
+    <form>
+        <h3>Редактор</h3>
+        Студент: 
+        <select name="student" id="selected_student">
+            <option value="-1" selected>---Добавить---</option>
+            <option value="1">Тест</option>
+        </select><br>
+        ФИО: <input type="text" name="fullname"><br>
+        <input type="submit" value="Добавить" id="send"> <input type="submit" value="Удалить" id="remove" disabled="true">
+    </form><br>
+    <a href="/">Вернуться</a>
+    <script>
+        var submit = document.getElementById("send")
+        var select = document.getElementById("selected_student")
+        var remove = document.getElementById("remove")
+        select.addEventListener("change", ()=>{
+            if(select.value == -1){
+                submit.value = "Добавить"
+                remove.disabled = true
+            }else{
+                submit.value = "Обновить"
+                remove.disabled = false
+            }
+        })
+    </script>
+</body>
+</html>

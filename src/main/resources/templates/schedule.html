@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h2>Релактор расписания</h2>
+    <form action="">
+        День недели: 
+        <select name="DOTW" id="DOTW">
+            <option value="-1" selected disabled>--Выберите день недели---</option>
+            <option value="0">Понедельник</option>
+            <option value="1">Вторник</option>
+            <option value="2">Среда</option>
+            <option value="3">Четверг</option>
+            <option value="4">Пятница</option>
+            <option value="5">Суббота</option>
+            <option value="6">Воскресенье</option>
+        </select><br>
+        Предмет:
+        <select name="lesson" id="lesson">
+            <option value="-1" selected disabled>---Выберите предмет---</option>
+            <option value="1">Тест</option>
+        </select><br>
+        Тип: 
+        <select name="type" id="type">
+            <option value="-1" selected disabled>---Выберите тип занятия---</option>
+            <option value="0">Лекция</option>
+            <option value="1">Семинар</option>
+            <option value="2">Лабораторная работа</option>
+        </select><br>
+        Неделя:
+        <span class="ratio-week">Нечётная <input type="radio" name="week" id="odd" checked value="odd"></span>
+        <span class="ratio-week">Чётная <input type="radio" name="week" id="even" value="even"><br></span>
+        Время проведения занятия: <input type="time" name="time" id="time" value="12:00"><br>
+        Действие:
+        <span class="ratio-week">Добавить <input type="radio" name="action" id="add" checked value="add"></span>
+        <span class="ratio-week">Редактировать <input type="radio" name="action" id="edit" value="edit"><br></span>
+        <input type="submit" value="Добавить" id="execute" disabled> <input type="submit" value="Удалить" disabled id="delete"> 
+    </form><br>
+    <a href="/">Вернуться</a>
+    <script>
+        var dayOfTheWeek = document.getElementById("DOTW")
+        var lesson = document.getElementById("lesson")
+        var type = document.getElementById("type")
+        var execute = document.getElementById("execute")
+        var _delete = document.getElementById("delete")
+        var action = document.getElementsByName("action")
+        function change(){
+            console.log(dayOfTheWeek.value, lesson.value, type.value)
+            if(dayOfTheWeek.value==-1 || lesson.value==-1 || type.value==-1){
+                execute.disabled = true
+            }else{
+                execute.disabled = false
+            }
+        }
+        function actionchanged(){
+            if(action[0].checked){
+                _delete.disabled = true
+            }else{
+                _delete.disabled = false
+            }
+        }
+        dayOfTheWeek.addEventListener("change", change)
+        lesson.addEventListener("change", change)
+        type.addEventListener("change", change)
+        action.forEach(element => {
+            element.addEventListener("click", actionchanged)
+        });
+    </script>
+</body>
+</html>
