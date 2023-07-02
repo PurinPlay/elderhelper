@@ -1,8 +1,9 @@
-package ru.vk.bot.site;
+package ru.vk.bot.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class NavController {
