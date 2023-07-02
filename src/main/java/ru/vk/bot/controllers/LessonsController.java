@@ -33,6 +33,7 @@ public class LessonsController {
             }
             lessonsRepository.save(newLesson);
         }catch (Exception e){
+            System.out.println(e.getMessage());
             status = "failure";
         }
         return "redirect:/lesson?status="+status;

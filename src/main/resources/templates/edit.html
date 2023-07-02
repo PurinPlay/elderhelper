@@ -22,22 +22,7 @@
         <input type="submit" value="Обновить" id="update" disabled>
     </form><br>
     <a href="/">Вернуться</a>
-    <script>
-        var students = document.getElementById("student")
-        var lessons = document.getElementById("lesson")
-        var date = document.getElementById("date")
-        var button = document.getElementById("update")
-        date.value = "2023-07-05"
-        function change(){
-            if(lessons.value==-1 || students.value == -1){
-                button.disabled = true
-            }else{
-                button.disabled = false
-            }
-        }
-        students.addEventListener("change", change)
-        lessons.addEventListener("change", change)
-        date.addEventListener("change", change)
-    </script>
+    <script th:src="@{/js/alert.js}"></script>
+    <script th:src="@{js/edit.js}"></script>
 </body>
 </html>

@@ -2,7 +2,6 @@ package ru.vk.bot.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.Builder;
 
 import java.sql.Time;
 import java.util.Set;
