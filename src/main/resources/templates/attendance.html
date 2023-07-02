@@ -8,10 +8,14 @@
 </head>
 <body>
     <h2>Посещаемость</h2>
-    <select name="lesson" id="lesson">
-        <option value="-1" selected disabled>---Выберите предмет---</option>
-        <option value="1">Тест</option>
-    </select><br><br>
+    <form action="" method="post">
+        <select name="lesson" id="lesson">
+            <option value="-1" selected disabled>---Выберите предмет---</option>
+            <div th:replace="blocks/select-templates :: lessons-select"/>
+        </select>
+        <input type="submit" value="Обновить">
+    </form>
+    <br>
     <div class="wrapper">
         <table>
             <tr>

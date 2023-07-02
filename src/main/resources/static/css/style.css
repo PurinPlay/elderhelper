@@ -22,13 +22,13 @@ form{
     background-color: white;
     padding: 0.5%;
     width: fit-content;
+    border: 1px solid black;
 }
     form>h3{
         margin: 0;
     }
     form>input{
-        margin: 3px auto;
-
+        margin: 1% auto;
     }
     form>select{
         margin: 2px auto;
@@ -38,6 +38,10 @@ form{
         padding: 2px 3px;
         margin: 0 1px;
     }
+        select{
+            text-align: center;
+        }
+
 .wrapper{
     overflow-y: auto;
     width: 100%;

@@ -8,14 +8,14 @@
 </head>
 <body>
     <h2>Предметы</h2>
-    <form>
+    <form action="/lesson/edit" method="post">
         <h3>Редактор</h3>
         Студент: 
-        <select name="student" id="selected_lesson">
+        <select name="lesson" id="selected_lesson">
             <option value="-1" selected>---Добавить---</option>
-            <option value="1">Тест</option>
+            <div th:replace="blocks/select-templates :: lessons-select"/>
         </select><br>
-        Название: <input type="text" name="fullname"><br>
+        Название: <input type="text" name="title" maxlength="100"><br>
         <input type="submit" value="Добавить" id="send"> <input type="submit" value="Удалить" id="remove" disabled="true">
     </form><br>
     <a href="/">Вернуться</a>

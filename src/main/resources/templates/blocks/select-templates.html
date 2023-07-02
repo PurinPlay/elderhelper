@@ -1,0 +1,8 @@
+<html lang="en" xmlns:th="https://thymeleaf.org">
+    <div th:fragment="students-select" th:each="student : ${students}">
+        <option th:value="${student.id}" th:text="${student.fullName}"/>
+    </div>
+    <div th:fragment="lessons-select" th:each="lesson : ${lessons}">
+        <option th:value="${lesson.id}" th:text="${lesson.title}"/>
+    </div>
+</html>

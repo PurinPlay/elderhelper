@@ -13,17 +13,18 @@ public class Lessons {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "lesson_id")
     private int id;
-    @Size(max = 50)
+    @Size(max = 100)
     @NotNull
+    @Column(unique=true)
     private String title;
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Schedule> ob;
-    public int getLesson_id() {
+    public int getId() {
         return id;
     }
 
-    public void setLesson_id(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -35,11 +36,13 @@ public class Lessons {
         this.title = title;
     }
 
+    public Lessons(String title) {
+        this.title = title;
+    }
     public Lessons(int id, String title) {
         this.id = id;
         this.title = title;
     }
-
     public Lessons() {
     }
 }

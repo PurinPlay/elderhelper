@@ -40,7 +40,9 @@ public class Students {
         this.id = id;
         this.fullName = fullName;
     }
-
+    public Students(String fullName) {
+        this.fullName = fullName;
+    }
     public Students() {
     }
 }

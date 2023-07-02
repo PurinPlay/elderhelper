@@ -12,11 +12,11 @@
         <input type="date" name="date" id="date" value=""><br>
         <select name="student" id="student">
             <option value="-1"selected disabled>---Студент---</option>
-            <option value="1">Тест</option>
+            <div th:replace="blocks/select-templates :: students-select"/>
         </select><br>
         <select name="lesson" id="lesson">
             <option value="-1" selected disabled>---Предмет---</option>
-            <option value="1">Тест</option>
+            <div th:replace="blocks/select-templates :: lessons-select"/>
         </select><br>
         На паре присутствовал <input type="checkbox" name="isVisited" id=""><br>
         <input type="submit" value="Обновить" id="update" disabled>
