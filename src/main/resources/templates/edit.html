@@ -8,17 +8,17 @@
 </head>
 <body>
     <h2>Редактирование посещаемости</h2>
-    <form action="">
+    <form action="/edit/update" method="post">
         <input type="date" name="date" id="date" value=""><br>
         <select name="student" id="student">
             <option value="-1"selected disabled>---Студент---</option>
             <div th:replace="blocks/select-templates :: students-select"/>
         </select><br>
-        <select name="lesson" id="lesson">
+        <select name="schedule" id="schedule">
             <option value="-1" selected disabled>---Предмет---</option>
-            <div th:replace="blocks/select-templates :: lessons-select"/>
+            <div th:replace="blocks/select-templates :: schedule-select"/>
         </select><br>
-        На паре присутствовал <input type="checkbox" name="isVisited" id=""><br>
+        На паре присутствовал <input type="checkbox" name="isVisited" id="" value="true"><br>
         <input type="submit" value="Обновить" id="update" disabled>
     </form><br>
     <a href="/">Вернуться</a>

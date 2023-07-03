@@ -5,6 +5,8 @@ import jakarta.persistence.Embeddable;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotNull;
+import ru.vk.bot.models.Schedule;
+import ru.vk.bot.models.Students;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -60,11 +62,11 @@ public class AttendanceIdentity implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AttendanceIdentity that = (AttendanceIdentity) o;
+        AttendanceIdentity identity = (AttendanceIdentity) o;
 
-        if (studentId != that.studentId) return false;
-        if (scheduleId != that.scheduleId) return false;
-        return date.equals(that.date);
+        if (studentId != identity.studentId) return false;
+        if (scheduleId != identity.scheduleId) return false;
+        return date.equals(identity.date);
     }
 
     @Override

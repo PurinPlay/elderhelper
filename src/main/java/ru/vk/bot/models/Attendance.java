@@ -23,7 +23,7 @@ public class Attendance {
     @JoinColumn(name = "student_id")
     private Students student;
 
-    public Attendance(AttendanceIdentity attendanceIdentity, boolean isVisited, Schedule schedule, Students student) {
+    public Attendance(AttendanceIdentity attendanceIdentity, Schedule schedule, Students student, boolean isVisited) {
         this.attendanceIdentity = attendanceIdentity;
         this.isVisited = isVisited;
         this.schedule = schedule;

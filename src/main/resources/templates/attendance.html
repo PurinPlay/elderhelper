@@ -8,7 +8,7 @@
 </head>
 <body>
     <h2>Посещаемость</h2>
-    <form action="" method="post">
+    <form action="/attendance" method="get">
         <select name="lesson" id="lesson">
             <option value="-1" selected disabled>---Выберите предмет---</option>
             <div th:replace="blocks/select-templates :: lessons-select"/>
@@ -17,57 +17,16 @@
     </form>
     <br>
     <div class="wrapper">
-        <table>
-            <tr>
-                <td></td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-                <td>04.07.2001</td>
-            </tr>
-            <tr>
-                <td>Пурин Игорь Игоревич</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Пурин Игорь Игоревич</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Пурин Игорь Игоревич</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Пурин Игорь Игоревич</td>
-                <td></td>
-            </tr>
+        <table id="show">
+
         </table>
     </div>
     <br><a href="/">Вернуться</a>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        let data = /*[[${data}]]*/ "val"
+        /*]]*/
+    </script>
     <script th:src="@{/js/attendance.js}"></script>
 </body>
 </html>
