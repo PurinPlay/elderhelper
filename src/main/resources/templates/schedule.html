@@ -8,7 +8,18 @@
 </head>
 <body>
     <h2>Релактор расписания</h2>
-    <form action="">
+    <form method="post">
+        Рассписание:
+        <select name="scheduleList" id="scheduleList">
+            <option value="-1" selected>---Добавить---</option>
+            <div th:replace="blocks/select-templates :: schedule-select"/>
+        </select><br>
+        Предмет:
+        <select name="lesson" id="lesson">
+            <option value="-1" selected disabled>---Выберите предмет---</option>
+            <div th:replace="blocks/select-templates :: lessons-select"/>
+        </select><br>
+        Преподаватель: <input type="text" name="professor"><br>
         День недели: 
         <select name="DOTW" id="DOTW">
             <option value="-1" selected disabled>--Выберите день недели---</option>
@@ -20,27 +31,20 @@
             <option value="5">Суббота</option>
             <option value="6">Воскресенье</option>
         </select><br>
-        Предмет:
-        <select name="lesson" id="lesson">
-            <option value="-1" selected disabled>---Выберите предмет---</option>
-            <div th:replace="blocks/select-templates :: lessons-select"/>
-        </select><br>
+
         Тип: 
         <select name="type" id="type">
             <option value="-1" selected disabled>---Выберите тип занятия---</option>
-            <option value="0">Лекция</option>
-            <option value="1">Семинар</option>
-            <option value="2">Лабораторная работа</option>
+            <option value="Лекция">Лекция</option>
+            <option value="Семинар">Семинар</option>
+            <option value="Лабораторная работа">Лабораторная работа</option>
         </select><br>
         Неделя:
-        <span class="ratio-week">Нечётная <input type="radio" name="week" id="odd" checked value="odd"></span>
-        <span class="ratio-week">Чётная <input type="radio" name="week" id="even" value="even"><br></span>
-        <span class="ratio-week">Всегда <input type="radio" name="week" id="both" value="both"><br></span>
+        <span class="ratio-week">Нечётная <input type="radio" name="week" id="odd" checked value="1"></span>
+        <span class="ratio-week">Чётная <input type="radio" name="week" id="even" value="2"><br></span>
+        <span class="ratio-week">Всегда <input type="radio" name="week" id="both" value="3"><br></span>
         Время проведения занятия: <input type="time" name="time" id="time" value="12:00"><br>
-        Действие:
-        <span class="ratio-week">Добавить <input type="radio" name="action" id="add" checked value="add"></span>
-        <span class="ratio-week">Редактировать <input type="radio" name="action" id="edit" value="edit"><br></span>
-        <input type="submit" value="Добавить" id="execute" disabled> <input type="submit" value="Удалить" disabled id="delete"> 
+        <input type="submit" value="Добавить" id="execute" disabled formaction="schedule/edit"> <input type="submit" value="Удалить" disabled id="delete" formaction="schedule/remove">
     </form><br>
     <a href="/">Вернуться</a>
     <script th:src="@{/js/alert.js}"></script>

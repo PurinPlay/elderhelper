@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.vk.bot.models.Lessons;
+import ru.vk.bot.models.Students;
 import ru.vk.bot.repository.LessonsRepository;
 
 @Controller
@@ -37,5 +38,21 @@ public class LessonsController {
             status = "failure";
         }
         return "redirect:/lesson?status="+status;
+    }
+    @PostMapping("/lesson/remove")
+    public String removeLesson(@RequestParam int lesson){
+        String status = "";
+        try {
+            if(lesson==-1){
+                throw new Exception("nice try");
+            }
+            Lessons targetLesson = lessonsRepository.findById(lesson).orElseThrow();
+            lessonsRepository.delete(targetLesson);
+            status="removed";
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            status = "failure";
+        }
+        return "redirect:/student?status="+status;
     }
 }

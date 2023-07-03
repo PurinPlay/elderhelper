@@ -2,7 +2,7 @@ package ru.vk.bot.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import ru.vk.bot.models.embeddables.AttendanceIdentity;
+import ru.vk.bot.embeddables.AttendanceIdentity;
 
 @Entity
 @Table(name = "attendance")

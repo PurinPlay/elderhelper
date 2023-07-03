@@ -5,4 +5,7 @@
     <div th:fragment="lessons-select" th:each="lesson : ${lessons}">
         <option th:value="${lesson.id}" th:text="${lesson.title}"/>
     </div>
+    <div th:fragment="schedule-select" th:each="schedule : ${schedules}">
+        <option th:value="${schedule.id}" th:text="${schedule.lesson.title}"/>
+    </div>
 </html>

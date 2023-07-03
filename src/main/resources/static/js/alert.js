@@ -15,6 +15,8 @@ function checkStatus(){
             case "failure":
                 alert("В процессе работы произошла ошибка")
                 break
+            case "notFound":
+                alert("Запись не найдена")
             default:
                 break
         }

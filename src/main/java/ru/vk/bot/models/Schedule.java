@@ -18,6 +18,9 @@ public class Schedule {
     private Lessons lesson;
     private String professor;
     @NotNull
+    @Column(name = "day_of_the_week")
+    private int dayOfTheWeek;
+    @NotNull
     private Time time;
     @NotNull
     private String type;
@@ -26,10 +29,19 @@ public class Schedule {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "schedule")
     private Set<Attendance> attendances;
     public Schedule(){}
-    public Schedule(int id, Lessons lesson, String professor, Time time, String type, int week) {
+    public Schedule(int id, Lessons lesson, String professor, int dayOfTheWeek, Time time, String type, int week) {
         this.id = id;
         this.lesson = lesson;
         this.professor = professor;
+        this.time = time;
+        this.type = type;
+        this.week = week;
+    }
+
+    public Schedule(Lessons lesson, String professor, int dayOfTheWeek, Time time, String type, int week) {
+        this.lesson = lesson;
+        this.professor = professor;
+        this.dayOfTheWeek = dayOfTheWeek;
         this.time = time;
         this.type = type;
         this.week = week;
@@ -81,5 +93,13 @@ public class Schedule {
 
     public void setWeek(int week) {
         this.week = week;
+    }
+
+    public int getDayOfTheWeek() {
+        return dayOfTheWeek;
+    }
+
+    public void setDayOfTheWeek(int dayOfTheWeek) {
+        this.dayOfTheWeek = dayOfTheWeek;
     }
 }

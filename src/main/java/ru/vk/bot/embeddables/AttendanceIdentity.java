@@ -1,4 +1,4 @@
-package ru.vk.bot.models.embeddables;
+package ru.vk.bot.embeddables;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
