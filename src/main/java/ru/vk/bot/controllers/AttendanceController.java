@@ -14,6 +14,7 @@ import ru.vk.bot.repository.LessonsRepository;
 import ru.vk.bot.repository.ScheduleRepository;
 import ru.vk.bot.repository.StudentsRepository;
 
+import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -34,7 +35,7 @@ public class AttendanceController {
         if (lesson == -1){
             model.addAttribute("data", -1);
         }else{
-            model.addAttribute("data", 1);
+            model.addAttribute("data", buildAttendanceTable(lesson));
         }
         return "attendance";
     }
@@ -42,25 +43,25 @@ public class AttendanceController {
         String[][]out;
         List<Students> students = studentsRepository.findAll(Sort.by(Sort.Direction.ASC, "fullName"));
         out = new String[students.size()+1][];
-        out[0] = buildAttendanceRow(lesson, 0);
+        out[0] = buildAttendanceDateRow(lesson);
         for (int i = 1; i < out.length; i++) {
-            out[i] = buildAttendanceRow(lesson, students.get(i).getId());
+            out[i] = buildAttendanceRow(lesson, students.get(i-1).getId());
         }
         return out;
     }
-    private String[] buildAttendanceDateRow(int lesson, int studentId){
-        List<Attendance> temp = attendanceRepository.findLessonAttendanceForStudent(lesson, studentId);
+    private String[] buildAttendanceDateRow(int lesson){
+        List<Date> temp = attendanceRepository.findDatesByLessonId(lesson);
         String[]out = new String[temp.size()+1];
         out[0] = "";
         for (int i = 1; i < out.length; i++) {
-           out[i] = temp.get(i-1).getAttendanceIdentity().getDate().toString();
+           out[i] = temp.get(i-1).toString();
         }
         return out;
     }
     private String[] buildAttendanceRow(int lesson, int studentId){
         List<Attendance> temp = attendanceRepository.findLessonAttendanceForStudent(lesson, studentId);
         String[]out = new String[temp.size()+1];
-        out[0] = studentsRepository.findById(studentId).toString();
+        out[0] = studentsRepository.findById(studentId).orElseThrow().getFullName();
         for (int i = 1; i < out.length; i++) {
             out[i] = (temp.get(i-1).isVisited())?"Присутствовал":"Отсутствовал";
         }

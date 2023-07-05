@@ -6,13 +6,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.vk.bot.models.Attendance;
 import ru.vk.bot.models.Students;
+import ru.vk.bot.repository.AttendanceRepository;
 import ru.vk.bot.repository.StudentsRepository;
+import ru.vk.bot.repository.templates.DateSchedule;
+import ru.vk.bot.services.AttendanceService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class StudentsController {
     @Autowired
     private StudentsRepository studentsRepository;
+    @Autowired
+    private AttendanceRepository attendanceRepository;
+    @Autowired
+    private AttendanceService attendanceService;
     @GetMapping("/student")
     public String student(Model model){
         Iterable<Students> students = studentsRepository.findAll();
@@ -32,6 +43,7 @@ public class StudentsController {
                 status = "edited";
             }
             studentsRepository.save(newStudent);
+            updateFixAttendance(newStudent.getId());
         }catch (Exception e){
             System.out.println(e.getMessage());
             status = "failure";
@@ -53,5 +65,14 @@ public class StudentsController {
             status = "failure";
         }
         return "redirect:/student?status="+status;
+    }
+    public void updateFixAttendance(int studentId){
+        List<DateSchedule> data = attendanceRepository.findDistinctLessonDatesAndScheduleIds();
+        List<Attendance> attendanceList = new ArrayList<>();
+        for (var dateSchedule: data) {
+            Attendance attendance = attendanceService.createEntry(studentId, dateSchedule.getScheduleId(), dateSchedule.getDate(), false);
+            attendanceList.add(attendance);
+        }
+        attendanceRepository.saveAll(attendanceList);
     }
 }

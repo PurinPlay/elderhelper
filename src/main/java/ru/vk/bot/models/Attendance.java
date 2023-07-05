@@ -14,11 +14,11 @@ public class Attendance {
     @Column(name = "is_visited")
     private boolean isVisited;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @MapsId("scheduleId")
     @JoinColumn(name = "schedule_id")
     private Schedule schedule;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @MapsId("studentId")
     @JoinColumn(name = "student_id")
     private Students student;
